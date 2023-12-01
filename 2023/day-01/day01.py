@@ -47,7 +47,7 @@ for input_line in input_file.readlines():
     int_value = 0
     text_value = 0
 
-    print(input_line)
+    # print(input_line)
 
     for number in text_numbers:
         loc = input_line.find(number)
@@ -55,7 +55,7 @@ for input_line in input_file.readlines():
         if loc > -1 and loc < first_text_loc:
             first_text_loc = loc
             text_value = text_numbers.index(number)
-            print("value: " + str(number) + " found with numeric value: " + str(text_value))
+            # print("value: " + str(number) + " found with numeric value: " + str(text_value))
 
     for number in int_numbers:
         loc = input_line.find(str(number))
@@ -63,13 +63,43 @@ for input_line in input_file.readlines():
         if loc > -1 and loc < first_int_loc:
             first_int_loc = loc
             int_value = int_numbers.index(number)
-            print("value: " + str(number) + " found with int value: " + str(int_value))
+            # print("value: " + str(number) + " found with int value: " + str(int_value))
     if first_text_loc < first_int_loc:
         line_calib_value += (text_value * 10)
     else:
         line_calib_value += (int_value*10)
-    print("Line Calib Value: " + str(line_calib_value))
+    # print("Line Calib Value: " + str(line_calib_value))
+
+
+    # reverse the line and look for the last number
+    reversed_line = format(input_line[::-1])
+    first_int_loc = len(input_line)
+    first_text_loc = len(input_line)
+    int_value = 0
+    text_value = 0
+    # print (reversed_line)
+    for number in text_numbers:
+        loc = reversed_line.find(format(number[::-1]))
+        # print(str(loc) + " : " + str(first_text_loc))
+        if loc > -1 and loc < first_text_loc:
+            first_text_loc = loc
+            text_value = text_numbers.index(number)
+            # print("value: " + str(number) + " found with numeric value: " + str(text_value))
+
+    for number in int_numbers:
+        loc = reversed_line.find(str(number))
+        # print(str(loc) + " : " + str(first_int_loc))
+        if loc > -1 and loc < first_int_loc:
+            first_int_loc = loc
+            int_value = int_numbers.index(number)
+            # print("value: " + str(number) + " found with int value: " + str(int_value))
+    if first_text_loc < first_int_loc:
+        line_calib_value += text_value
+    else:
+        line_calib_value += int_value
+    # print("Line Calib Value: " + str(line_calib_value))
 
     total_calib_value += line_calib_value
+
 print("Calibration Value: " + str(total_calib_value))
 input_file.close()
