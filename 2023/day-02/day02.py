@@ -34,7 +34,7 @@ for input_line in input_file.readlines():
                 case _:
                     print("Unknown die: " + result[1] + "with value of" + result[0])
         print(invalid_game)
-    if invalid_game == False:
+    if invalid_game is False:
             sum_possible_games += game_num
     print(str(sum_possible_games))
 input_file.close()
