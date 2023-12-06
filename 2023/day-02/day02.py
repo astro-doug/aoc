@@ -32,10 +32,10 @@ for input_line in input_file.readlines():
                     if int(result[0]) > 14:
                         invalid_game = True
                 case _:
-                    print("Unknown die: " + result[1] + "with value of" + result[0])
+                    print("Unknown die: " + result[1] + " with value of" + result[0])
         print(invalid_game)
     if invalid_game is False:
-            sum_possible_games += game_num
+        sum_possible_games += game_num
     print(str(sum_possible_games))
 input_file.close()
 print("Sum of possible games: " + str(sum_possible_games))
@@ -48,7 +48,6 @@ sum_powers = 0
 
 for input_line in input_file.readlines():
     game_power = 0
-    game_num = 0
     max_red = 0
     max_green = 0
     max_blue = 0
@@ -75,12 +74,12 @@ for input_line in input_file.readlines():
                     if int(result[0]) > max_blue:
                         max_blue = int(result[0])
                 case _:
-                    print("Unknown die: " + result[1] + "with value of" + result[0])
+                    print(f"Unknown die: {result[1]} with value of {result[0]}")
 
     game_power = max_red * max_green * max_blue
-    print("Game Power: " + str(game_power))
+    print(f"Game Power: {str(game_power)}")
     sum_powers += game_power
 
     print(str(sum_powers))
 input_file.close()
-print("Sum of powers: " + str(sum_powers))
+print(f"Sum of powers: {str(sum_powers)}")
