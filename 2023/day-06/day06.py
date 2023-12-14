@@ -27,10 +27,14 @@ def count_race_wins_margin(races=None):
 def determine_if_win(current_race):
     for velocity in range(1, current_race.race_time):
         distance_travelled = velocity * (current_race.race_time - velocity)
-        logging.debug(f'Race: {current_race.raceID} - Velocity tested: {velocity} - Distance Travelled: {distance_travelled}')
+        # logging.debug(f'Race: {current_race.raceID} - Velocity tested: {velocity} - Distance Travelled: {distance_travelled}')
         if distance_travelled > current_race.race_distance:
-            logging.debug(f'We can win this way')
+            #logging.debug(f'We can win this way')
             current_race.ways_to_win += 1
+        else:
+            if current_race.ways_to_win > 1:
+                break
+
 
 def main():
     setup_logging()
@@ -55,8 +59,22 @@ def main():
     logging.info(f'Margin of Error for {count + 1} races: {count_race_wins_margin(races)}ms')
 
     logging.info("Puzzle 06 Part II - Wait For It")
-    logging.debug("")
+    logging.debug("Re-reading input, ignoring kerning...")
+    with open("input.txt", "r") as input_file:
+        race_times_line = input_file.readline().replace('Time:', '').replace(' ', '')
+        long_race_time = int(race_times_line.strip())
 
+        distance_lines = input_file.readline().replace('Distance:', '').replace(' ', '')
+        long_race_distance = int(distance_lines.strip())
+    # close the file
+    races = []
+    race = Race(raceID=count, race_time=long_race_time, race_distance=long_race_distance)
+    determine_if_win(race)
+    races.append(race)
+
+    logging.debug(f'Long Race: {race}')
+
+    logging.info(f'Margin of Error for Long race: {count_race_wins_margin(races)}ms')
 
     logging.info("Done")
 
