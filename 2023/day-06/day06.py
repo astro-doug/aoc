@@ -52,10 +52,12 @@ def main():
 
     logging.debug(f'Races: {races}')
 
-    logging.info(f'Margine of Error: {count_race_wins_margin(races)}')
+    logging.info(f'Margin of Error for {count + 1} races: {count_race_wins_margin(races)}ms')
 
     logging.info("Puzzle 06 Part II - Wait For It")
     logging.debug("")
+
+
     logging.info("Done")
 
 if __name__ == '__main__':
