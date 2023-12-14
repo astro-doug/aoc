@@ -2,10 +2,12 @@ import logging
 import re
 from dataclasses import dataclass
 
+
 def setup_logging():
     level = logging.DEBUG
     fmt = '[%(levelname)s] %(asctime)s - %(message)s'
-    logging.basicConfig(level = level, format=fmt)
+    logging.basicConfig(level=level, format=fmt)
+
 
 @dataclass
 class Race:
@@ -13,6 +15,7 @@ class Race:
     race_time: int
     race_distance: int
     ways_to_win: int = 0
+
 
 def count_race_wins_margin(races=None):
     if races is None:
@@ -24,12 +27,13 @@ def count_race_wins_margin(races=None):
 
     return total_race_wins_margin
 
+
 def determine_if_win(current_race):
     for velocity in range(1, current_race.race_time):
         distance_travelled = velocity * (current_race.race_time - velocity)
         # logging.debug(f'Race: {current_race.raceID} - Velocity tested: {velocity} - Distance Travelled: {distance_travelled}')
         if distance_travelled > current_race.race_distance:
-            #logging.debug(f'We can win this way')
+            # logging.debug('We can win this way')
             current_race.ways_to_win += 1
         else:
             if current_race.ways_to_win > 1:
@@ -78,6 +82,6 @@ def main():
 
     logging.info("Done")
 
+
 if __name__ == '__main__':
     main()
-
