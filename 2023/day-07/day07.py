@@ -1,5 +1,6 @@
 import logging
 from dataclasses import dataclass
+from typing import Final
 
 
 def setup_logging():
@@ -8,9 +9,9 @@ def setup_logging():
     logging.basicConfig(level=level, format=fmt)
 
 
-possible_cards = ['A'], ['K'], ['Q'], ['J'], ['T'], ['9'], ['8'], ['7'], ['6'], ['5'], ['4'], ['3'], ['2']
-possible_hands = (['Five of a Kind'], ['Four of a Kind'], ['Full House'], ['Three of a Kind'], ['Two Pair'],
-                  ['One Pair'], ['High Card'])
+POSSIBLE_CARDS: Final[tuple[str, ...]] = ('A' 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2')
+RANKED_POSSIBLE_HANDS: Final[tuple[str, ...]] = ('Five of a Kind', 'Four of a Kind', 'Full House', 'Three of a Kind'
+                                                 , 'Two Pair', 'One Pair', 'High Card')
 games = []
 
 
@@ -18,7 +19,7 @@ games = []
 class Game:
     hand: str
     bid: int
-    hand_type: possible_hands = None
+    hand_type: RANKED_POSSIBLE_HANDS = None
     relative_rank: int = 0
     absolute_rank: int = 0
 
