@@ -43,6 +43,7 @@ def determine_if_win(current_race):
 def main():
     setup_logging()
     logging.info("Advent of Code 2023 - Day 06")
+    logging.info("https://adventofcode.com/2023/day/6")
     logging.info("Puzzle 06 Part I - Wait For It")
     logging.debug("Loading input...")
     with open("input.txt", "r") as input_file:

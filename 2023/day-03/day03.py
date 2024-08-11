@@ -8,6 +8,7 @@ def setup_logging():
 def main():
     setup_logging()
     logging.info("Advent of Code 2023 - Day 03")
+    logging.info("https://adventofcode.com/2023/day/3")
     logging.info("Puzzle 03 Part I - Gear Ratios")
     logging.debug("Loading input...")
     with open("input.txt", "r") as input_file:

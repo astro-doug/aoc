@@ -1,4 +1,5 @@
 print("Advent of Code 2023 - Day 01")
+print("https://adventofcode.com/2023/day/1")
 print("Puzzle 1 Part I - Trebuchet?!")
 print("Loading input...")
 input_file = open("input.txt", "r")

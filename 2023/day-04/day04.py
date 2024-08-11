@@ -12,6 +12,7 @@ def main():
     setup_logging()
 
     logging.info("Advent of Code 2023 - Day 04")
+    logging.info("https://adventofcode.com/2023/day/4")
     logging.info("Puzzle 04 Part I - Scratchcards")
     logging.debug("Loading input...")
 
