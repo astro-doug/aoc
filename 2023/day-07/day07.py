@@ -18,7 +18,7 @@ RANKED_POSSIBLE_HANDS: Final[tuple[str, ...]] = ('High Card', 'One Pair', 'Two P
 j_is_joker: bool = False
 
 
-@dataclass
+@dataclass(slots=True, kw_only=True) # slots implemented in 3.10 and later
 class Game:
     hand: str
     no_joker: str
