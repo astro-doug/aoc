@@ -1,9 +1,11 @@
 import logging
 
+
 def setup_logging():
-    level = logging.DEBUG
-    fmt = '[%(levelname)s] %(asctime)s - %(message)s'
+    level: int = logging.DEBUG
+    fmt: str = '[%(levelname)s] %(asctime)s - %(message)s'
     logging.basicConfig(level = level, format=fmt)
+
 
 def main():
     setup_logging()
@@ -15,6 +17,7 @@ def main():
         for input_line in input_file.readlines():
             logging.debug(input_line)
     logging.debug("Done")
+
 
 if __name__ == '__main__':
     main()
