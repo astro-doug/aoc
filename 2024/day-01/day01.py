@@ -1,5 +1,6 @@
 import logging
 
+
 def setup_logging():
     level: int = logging.INFO
     fmt: str = '[%(levelname)s] %(asctime)s - %(message)s'
@@ -16,6 +17,20 @@ def main() -> None:
     distances: list[int] = determine_distances(values[0], values[1])
     total_distance: int = determine_total(distances)
     logging.info(f"Total Distance: {total_distance}")
+    logging.info("Puzzle 01 Part II - Historian Hysteria")
+    distances = determine_similarity(values[0], values[1])
+    total_similarity: int = determine_total(distances)
+    logging.info(f"Total Similarity: {total_similarity}")
+
+
+def determine_similarity(left: list[int], right: list[int]) -> list[int]:
+    similarities: list[int] = []
+    for count, left_cord in enumerate(left):
+        value: int = int(left[count])
+        num_reps: int = right.count(value)
+        logging.info(f"{value} appears {num_reps} times in the right list")
+        similarities.append(value * num_reps)
+    return similarities
 
 
 def determine_total(distances: list[int]) -> int:
