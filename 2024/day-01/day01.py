@@ -62,7 +62,7 @@ def load_cords() -> list:
     logging.debug("Loading input...")
     with open("input.txt", "r") as input_file:
         for input_line in input_file.readlines():
-            split_input: list[int] = list(input_line.split('   '))
+            split_input: list[int] = list(map(int, input_line.split('   ')))
             left.append(split_input[0])
             sort_list(left)
             #logging.info(f"Left: {left}")
