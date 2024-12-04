@@ -3,7 +3,6 @@ from re import Match
 import re
 
 
-
 def setup_logging():
     level: int = logging.INFO
     fmt: str = '[%(levelname)s] %(asctime)s - %(message)s'
@@ -20,23 +19,37 @@ def main() -> None:
     commands: list[str] = parse_memory(memory)
     total: int = perform_calc(commands)
     logging.info(f"Total: {total}")
+    logging.info("Puzzle 03 Part II - Mull It Over")
 
 
 def perform_calc(commands: list[str]) -> int:
     total: int = 0
     val1: int
     val2: int
+    multiplier_enabled: bool = True
+
     for x, instruction in enumerate(commands):
-        m: Match = re.match("(\w+)\((\d+),(\d+)\)", instruction)
-        val1 = int(m.group(2))
-        val2 = int(m.group(3))
-        logging.info(f"Instruction: {instruction} - val1: {val1} - val2: {val2}")
-        total = total + (val1 * val2)
+        flag: Match = re.match("(do\(\)|don\'t\(\))", instruction)
+        logging.info(f"Flag: {flag}")
+        if flag:
+            if flag[1] == "do()":
+                logging.info("Enabling multiplier")
+                multiplier_enabled = True
+            elif flag[1] == "don't()":
+                logging.info("Disabling multiplier")
+                multiplier_enabled = False
+        if multiplier_enabled:
+            m: Match = re.match("(\w+)\((\d+),(\d+)\)", instruction)
+            if m:
+                val1 = int(m.group(2))
+                val2 = int(m.group(3))
+                logging.info(f"Instruction: {instruction} - val1: {val1} - val2: {val2}")
+                total = total + (val1 * val2)
     return total
 
 
 def parse_memory(memory: str) -> list[str]:
-    commands: list[str] = re.findall(r"(mul\(\d+,\d+\))", memory)
+    commands: list[str] = re.findall(r"mul\(\d+,\d+\)|do\(\)|don\'t\(\)", memory)
     logging.info(f"commands: {commands}")
     return commands
 
