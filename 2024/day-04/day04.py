@@ -65,7 +65,7 @@ def main() -> None:
     puzzle_width: int = len(puzzle)
     puzzle_height: int = len(puzzle[0])
     logging.info(f"Puzzle dimensions: [{puzzle_width}, {puzzle_height}]")
-    """
+
     times_xmas_found: int = 0
     for col in range(puzzle_width):
         for row in range(puzzle_height):
@@ -79,7 +79,7 @@ def main() -> None:
             #    times_found += 1
             #    logging.info(f"{WORD} found beginning at ({col}, {row})")
     logging.info(f"Found {times_xmas_found} occurrences of {XMAS_WORD} in the puzzle")
-    """
+
     logging.info("Puzzle 04 Part II - Ceres Search")
     times_mas_found: int = 0
     for col in range(puzzle_width):
